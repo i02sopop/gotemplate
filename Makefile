@@ -145,10 +145,10 @@ build-dirs:
 	@mkdir -p bin/$(ARCH)
 	@mkdir -p .go/src/$(PKG) .go/pkg .go/bin .go/std/$(ARCH)
 
-clean: container-clean bin-clean
+clean: container-clean bin-clean files-clean
 
 container-clean:
-	rm -rf .container-* .dockerfile-* .push-*
+	@rm -rf .container-* .dockerfile-* .push-*
 
 run:
 	@bin/$(ARCH)/$(BIN) -alsologtostderr=true
@@ -162,4 +162,7 @@ rpm build-rpm: build-local
 	@rpmbuild --define "_sourcedir $(CURRENT_DIR)/rpm" -bb rpm/mrrobot.spec
 
 bin-clean:
-	rm -rf .go bin
+	@rm -rf .go bin
+
+files-clean:
+	@rm -fr cpu.out mem.out block.out go_template.test
