@@ -28,7 +28,10 @@ go test -cover -covermode=count -installsuffix "static" ${TARGETS}
 go test -cpuprofile=cpu.out -installsuffix "static" ${TARGETS}
 go test -blockprofile=block.out -installsuffix "static" ${TARGETS}
 go test -memprofile=mem.out -installsuffix "static" ${TARGETS}
-go test -bench=${TARGETS} -benchmem
+go test -bench=${TARGETS} -benchmem -installsuffix "static"
+go test -bench=${TARGETS} -benchmem -memprofile=mem.out -installsuffix "static"
+go test -bench=${TARGETS} -benchmem -blockprofile=block.out -installsuffix "static"
+go test -bench=${TARGETS} -benchmem -cpuprofile=cpu.out -installsuffix "static"
 echo
 
 echo -n "Checking gofmt: "
