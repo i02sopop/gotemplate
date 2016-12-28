@@ -165,4 +165,21 @@ bin-clean:
 	@rm -rf .go bin
 
 files-clean:
-	@rm -fr cpu.out mem.out block.out go_template.test
+	@rm -fr cpu.log mem.log block.log go_template.test
+
+check-cpu-tests:
+	@go tool pprof -text -nodecount=10 ./go_template.test cpu.log
+
+check-block-tests:
+	@go tool pprof -text -nodecount=10 ./go_template.test block.log
+
+check-mem-tests:
+	@go tool pprof -text -nodecount=10 ./go_template.test mem.log
+
+check-tests:
+	@echo "CPU tests"
+	@+make check-cpu-tests
+	@echo "Block tests"
+	@+make check-block-tests
+	@echo "Mem tests"
+	@+make check-mem-tests
