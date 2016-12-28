@@ -25,6 +25,10 @@ TARGETS=$(for d in "$@"; do echo ./$d/...; done)
 echo "Running tests:"
 go test -i -installsuffix "static" ${TARGETS}
 go test -cover -covermode=count -installsuffix "static" ${TARGETS}
+go test -cpuprofile=cpu.out -installsuffix "static" ${TARGETS}
+go test -blockprofile=block.out -installsuffix "static" ${TARGETS}
+go test -memprofile=mem.out -installsuffix "static" ${TARGETS}
+go test -bench=${TARGETS} -benchmem
 echo
 
 echo -n "Checking gofmt: "

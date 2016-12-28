@@ -1,2 +1,6 @@
 /bin
 /.go
+/block.out
+/cpu.out
+/mem.out
+/go_template.test
