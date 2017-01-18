@@ -26,9 +26,12 @@ echo "Running tests:"
 go test -i -installsuffix "static" ${TARGETS}
 go test -cover -covermode=count -installsuffix "static" ${TARGETS}
 go test -bench=${TARGETS} -benchmem -installsuffix "static"
-go test -bench=${TARGETS} -benchmem -memprofile=mem.log -installsuffix "static"
-go test -bench=${TARGETS} -benchmem -blockprofile=block.log -installsuffix "static"
-go test -bench=${TARGETS} -benchmem -cpuprofile=cpu.log -installsuffix "static"
+
+for TARGET in ${TARGETS}; do
+go test -bench=${TARGET} -benchmem -memprofile=mem-${TARGET}.log -installsuffix "static"
+go test -bench=${TARGET} -benchmem -blockprofile=block-${TARGET}.log -installsuffix "static"
+go test -bench=${TARGET} -benchmem -cpuprofile=cpu-${TARGET}.log -installsuffix "static"
+done
 echo
 
 echo -n "Checking gofmt: "
