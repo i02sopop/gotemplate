@@ -20,22 +20,30 @@ set -o pipefail
 
 export CGO_ENABLED=0
 
-TARGETS=$(for d in "$@"; do echo ./$d/...; done)
+TARGETS=$(for d in "$@"; do go list ./$d/... | grep -v /vendor/; done)
 
 echo "Running tests:"
 go test -i -installsuffix "static" ${TARGETS}
+
+echo
+echo "Code coverage"
 go test -cover -covermode=count -installsuffix "static" ${TARGETS}
-go test -bench=${TARGETS} -benchmem -installsuffix "static"
+
+echo
+echo "Tests"
+go test ${TARGETS} -installsuffix "static"
 
 for TARGET in ${TARGETS}; do
-go test -bench=${TARGET} -benchmem -memprofile=mem-${TARGET}.log -installsuffix "static"
-go test -bench=${TARGET} -benchmem -blockprofile=block-${TARGET}.log -installsuffix "static"
-go test -bench=${TARGET} -benchmem -cpuprofile=cpu-${TARGET}.log -installsuffix "static"
+	echo
+	echo "Profiling for ${TARGET}"
+	go test -bench=${TARGET} -benchmem -memprofile=mem-${TARGET}.log -installsuffix "static"
+	go test -bench=${TARGET} -benchmem -blockprofile=block-${TARGET}.log -installsuffix "static"
+	go test -bench=${TARGET} -benchmem -cpuprofile=cpu-${TARGET}.log -installsuffix "static"
 done
 echo
 
 echo -n "Checking gofmt: "
-ERRS=$(find "$@" -type f -name \*.go | xargs gofmt -l 2>&1 || true)
+ERRS=$(find "$@" -type f -name \*.go | grep -v /vendor/ | xargs gofmt -l 2>&1 || true)
 if [ -n "${ERRS}" ]; then
     echo "FAIL - the following files need to be gofmt'ed:"
     for e in ${ERRS}; do
