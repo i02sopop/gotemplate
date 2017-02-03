@@ -14,10 +14,10 @@
 #
 
 # The binary to build (just the basename).
-BIN := go_template
+BIN := gotemplate
 
 # This repo's root import path (under GOPATH).
-PKG := github.com/ritho/go_template
+PKG := github.com/ritho/gotemplate
 
 # Where to push the docker image.
 REGISTRY ?= ritho
@@ -155,7 +155,6 @@ run:
 
 build-local: build-dirs
 	@go build -o bin/$(ARCH)/$(BIN) cmd/mrrobot/main.go
-	
 
 rpm build-rpm: build-local
 	@cp bin/$(ARCH)/$(BIN) rpm/
@@ -165,16 +164,16 @@ bin-clean:
 	@rm -rf .go bin
 
 files-clean:
-	@rm -fr cpu-*.log mem-*.log block-*.log go_template.test
+	@rm -fr cpu-*.log mem-*.log block-*.log gotemplate.test
 
 check-cpu-tests:
-	@go tool pprof -text -nodecount=10 ./go_template.test cpu-*.log
+	@go tool pprof -text -nodecount=10 ./gotemplate.test cpu-*.log
 
 check-block-tests:
-	@go tool pprof -text -nodecount=10 ./go_template.test block-*.log
+	@go tool pprof -text -nodecount=10 ./gotemplate.test block-*.log
 
 check-mem-tests:
-	@go tool pprof -text -nodecount=10 ./go_template.test mem-*.log
+	@go tool pprof -text -nodecount=10 ./gotemplate.test mem-*.log
 
 check-tests:
 	@echo "CPU tests"
