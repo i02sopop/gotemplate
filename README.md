@@ -3,7 +3,7 @@ This repo is a template to start a new go project. The binary generated only sho
 
 # How to use it
 
-To build the *gotemplate* command run:
+Both to build and to test the project I make use of docker, using the `golang:1.7-alpine` image, that will be downloaded the first time tou build the project or run the tests, so you need docker permissions to work with the project. To build the *gotemplate* command run:
 
 ```
 make
