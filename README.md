@@ -1,5 +1,7 @@
 # gotemplate
-This repo is a template to start a new go project.
+This repo is a template to start a new go project. The binary generated only shows a hello world message, but it have the enough infrastucture and code to start a go project and run the tests.
+
+# How to use it
 
 To build the *gotemplate* command run:
 
