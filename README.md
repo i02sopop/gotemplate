@@ -15,7 +15,12 @@ and it will generate the binary in `bin/arch/gotemplate`, being arch your comput
 make tests
 ```
 
-and it will show the tests results on the terminal.
+and it will show the tests results on the terminal. You can cross-compile **gotemplate** by changing the variable ARCH in the Makefile by one of the next:
+
+* amd64
+* arm
+* arm64
+* ppc64le
 
 # License
 Gotemplate is licensed under the [GNU GPLv3](https://www.gnu.org/licenses/gpl.html). You should have received a copy of the GNU General Public License along with Gotemplate. If not, see http://www.gnu.org/licenses/.
