@@ -127,7 +127,7 @@ push-name:
 version:
 	@echo $(VERSION)
 
-test: build-dirs
+tests: build-dirs
 	@docker run                                                            \
 	    -ti                                                                \
 	    -u $$(id -u):$$(id -g)                                             \
