@@ -9,7 +9,7 @@ Both to build and test the project I make use of docker, using the `golang:1.7-a
 make
 ```
 
-and it will generate the binary in `bin/arch/gotemplate`, being arch your computer architecture. To run the tests you should run:
+and it will generate the binary in `bin/amd64/gotemplate`. To run the tests you should run:
 
 ```
 make tests
