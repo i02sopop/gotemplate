@@ -1,5 +1,19 @@
 # gotemplate
-This repo is a template to start a new go project. It have a Makefile to build the command gotemplate and to run the tests in Docker.
+This repo is a template to start a new go project.
+
+To build the *gotemplate* command run:
+
+```
+make
+```
+
+and it will generate the binary in `bin/arch/gotemplate`, being arch your computer architecture. To run the tests you should run:
+
+```
+make tests
+```
+
+and it will show the tests results on the terminal.
 
 # License
 Gotemplate is licensed under the [GNU GPLv3](https://www.gnu.org/licenses/gpl.html). You should have received a copy of the GNU General Public License along with Gotemplate. If not, see (http://www.gnu.org/licenses/).
