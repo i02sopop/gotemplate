@@ -36,10 +36,10 @@ go test ${TARGETS} -installsuffix "static"
 for TARGET in ${TARGETS}; do
 	echo
 	echo "Profiling for ${TARGET}"
-	LOG=`echo ${TARGET} | cut -d'/' -f 3`
-	go test -bench=${TARGET} -benchmem -memprofile=mem-${LOG}.log -installsuffix "static"
-	go test -bench=${TARGET} -benchmem -blockprofile=block-${LOG}.log -installsuffix "static"
-	go test -bench=${TARGET} -benchmem -cpuprofile=cpu-${LOG}.log -installsuffix "static"
+	LOG=`echo ${TARGET##*/}`
+	go test -v -run=XXX -bench=. ${TARGET} -benchmem -memprofile=mem-${LOG}.log -installsuffix "static"
+	go test -v -run=XXX -bench=. ${TARGET} -blockprofile=block-${LOG}.log -installsuffix "static"
+	go test -v -run=XXX -bench=. ${TARGET} -cpuprofile=cpu-${LOG}.log -installsuffix "static"
 done
 echo
 

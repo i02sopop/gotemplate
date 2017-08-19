@@ -158,7 +158,7 @@ build-local: build-dirs
 
 rpm build-rpm: build-local
 	@cp bin/$(ARCH)/$(BIN) rpm/
-	@rpmbuild --define "_sourcedir $(CURRENT_DIR)/rpm" -bb rpm/mrrobot.spec
+	@rpmbuild --define "_sourcedir $(CURRENT_DIR)/rpm" -bb rpm/gotemplate.spec
 
 bin-clean:
 	@rm -rf .go bin
