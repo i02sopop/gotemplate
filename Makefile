@@ -1,18 +1,3 @@
-# Copyright 2016 The Kubernetes Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
 # The binary to build (just the basename).
 BIN := gotemplate
 
@@ -27,15 +12,8 @@ ARCH ?= amd64
 
 # This version-strategy uses git tags to set the version string
 VERSION := $(shell git describe --tags --always --dirty)
-#
-# This version-strategy uses a manual value to set the version string
-#VERSION := 1.2.3
 
-###
-### These variables should not need tweaking.
-###
-
-SRC_DIRS := . # directories which hold app source (not vendored)
+SRC_DIRS := .
 
 ALL_ARCH := amd64 arm arm64 ppc64le
 
@@ -57,7 +35,7 @@ endif
 
 IMAGE := $(REGISTRY)/$(BIN)-$(ARCH)
 
-BUILD_IMAGE ?= golang:1.7-alpine
+BUILD_IMAGE ?= golang:1.14-alpine
 
 # If you want to build all binaries, see the 'all-build' rule.
 # If you want to build all containers, see the 'all-container' rule.
