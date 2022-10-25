@@ -1,3 +1,3 @@
 module github.com/i02sopop/gotemplate
 
-go 1.14
+go 1.19

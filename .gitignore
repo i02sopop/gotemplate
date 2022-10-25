@@ -4,3 +4,4 @@
 /cpu*.log
 /mem*.log
 /gotemplate.test
+/cover.out
