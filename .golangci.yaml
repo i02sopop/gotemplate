@@ -153,6 +153,12 @@ linters-settings:
         paramsOnly: true
       rangeValCopy:
         sizeThreshold: 32
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/i02sopop/gotemplate)
+    custom-order: true
 
 issues:
   # Excluding configuration per-path and per-linter
